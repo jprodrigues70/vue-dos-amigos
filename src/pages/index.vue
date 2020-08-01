@@ -4,22 +4,16 @@
       Welcome to my page, bro!
     </h1>
     <div v-if="room">
-      <p>We'll talk about room {{ room }}</p>
-      <Btn @click="goToRoom"> Enter room {{ room }} </Btn>
+      <p>We'll talk about room {{ roomToPrint }}</p>
+      <Btn @click="goToRoom"> Enter room {{ roomToPrint }} </Btn>
     </div>
   </div>
 </template>
 <script>
+import room from "@/mixins/room";
 export default {
   name: "Index",
-  computed: {
-    room() {
-      if (this.$route.query && this.$route.query.room) {
-        return this.$route.query.room;
-      }
-      return "";
-    },
-  },
+  mixins: [room],
   methods: {
     goToRoom() {
       this.$router.push({ path: `/room/${this.room}`, query: { a: "b" } });

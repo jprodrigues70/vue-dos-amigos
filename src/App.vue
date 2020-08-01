@@ -33,7 +33,8 @@
   global-components
   slots,
   named-slots,
-  vue-router and pages
+  vue-router and pages,
+  mixins
  */
 export default {
   name: "App",
