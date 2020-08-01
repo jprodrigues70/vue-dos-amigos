@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <button style="margin: 0 auto" @click="click">Click me</button>
+    <button v-if="!clicked" style="margin: 0 auto" @click="click">
+      Click me
+    </button>
+    <span v-else>
+      Congrats, bro!
+    </span>
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld :msg="message" @updated="whatYouWillDo" />
   </div>
@@ -15,6 +20,9 @@ import HelloWorld from "./components/HelloWorld.vue";
   methods,
   events,
   call-methods,
+  computed,
+  v-if
+  v-else
  */
 export default {
   name: "App",
@@ -24,6 +32,7 @@ export default {
   data() {
     return {
       message: "Pre-set message",
+      clicked: false,
     };
   },
   beforeCreate() {
@@ -53,6 +62,7 @@ export default {
   },
   methods: {
     click($e) {
+      this.clicked = true;
       this.message = "The welcome message was change";
       console.log($e);
     },
