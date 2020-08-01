@@ -7,6 +7,10 @@
       <p>We'll talk about room {{ roomToPrint }}</p>
       <Btn @click="goToRoom"> Enter room {{ roomToPrint }} </Btn>
     </div>
+    <div>
+      <Btn @click="bg(1)">Black BG</Btn>
+      <Btn @click="bg(0)">White BG</Btn>
+    </div>
   </div>
 </template>
 <script>
@@ -17,6 +21,11 @@ export default {
   methods: {
     goToRoom() {
       this.$router.push({ path: `/room/${this.room}`, query: { a: "b" } });
+    },
+    bg(e) {
+      this.$store.dispatch("config/changeBlack", e).then(() => {
+        console.log("YES!");
+      });
     },
   },
 };

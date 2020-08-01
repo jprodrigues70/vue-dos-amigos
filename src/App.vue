@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ 'v--black': black }">
     <router-view />
     <!-- <div style="margin: 0 auto">
       <Btn @click="click">
@@ -36,6 +36,7 @@
   vue-router and pages,
   mixins
  */
+import { mapState } from "vuex";
 export default {
   name: "App",
   data() {
@@ -43,6 +44,11 @@ export default {
       message: "Pre-set message",
       clicked: false,
     };
+  },
+  computed: {
+    ...mapState({
+      black: (state) => state.config.black,
+    }),
   },
   beforeCreate() {
     console.log(this.message);
@@ -83,12 +89,24 @@ export default {
 </script>
 
 <style>
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding-top: 60px;
+}
+.v--black {
+  color: #fff;
+  background-color: #000;
 }
 </style>
