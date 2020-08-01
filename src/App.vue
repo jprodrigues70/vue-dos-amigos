@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HelloWorld :msg="message" />
   </div>
 </template>
 
@@ -17,6 +17,32 @@ export default {
   components: {
     HelloWorld,
   },
+  data() {
+    return {
+      message: "Pre-set message",
+    };
+  },
+  beforeCreate() {
+    console.log(this.message);
+    console.log("Events & lifeCycle are ok!");
+  },
+  created() {
+    console.log(this.message);
+    console.log(
+      "Injections & reactivity are ok! This time is perfect to call api's;"
+    );
+  },
+  beforeMount() {
+    this.message = "This is my own welcome message";
+    console.log(this.message);
+    console.log("Template compilation is ok, but i'm not very util");
+  },
+  mounted() {
+    console.log(this.message);
+    console.log("Page is fully mounted and rendered");
+  },
+  beforeUpdate() {},
+  updated() {},
 };
 </script>
 
