@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div style="margin: 0 auto">
+    <router-view />
+    <!-- <div style="margin: 0 auto">
       <Btn @click="click">
         Click me
       </Btn>
@@ -14,7 +15,7 @@
       <template #footer>
         This is a card footer
       </template>
-    </Card>
+    </Card> -->
   </div>
 </template>
 
@@ -31,7 +32,8 @@
   v-else
   global-components
   slots,
-  named-slots
+  named-slots,
+  vue-router and pages
  */
 export default {
   name: "App",
