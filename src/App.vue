@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <button style="margin: 0 auto" @click="click">Click me</button>
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld :msg="message" />
+    <HelloWorld :msg="message" @updated="whatYouWillDo" />
   </div>
 </template>
 
@@ -10,7 +11,10 @@ import HelloWorld from "./components/HelloWorld.vue";
 /**
   components,
   props,
-  lifeCycle
+  lifeCycle,
+  methods,
+  events,
+  call-methods,
  */
 export default {
   name: "App",
@@ -41,8 +45,21 @@ export default {
     console.log(this.message);
     console.log("Page is fully mounted and rendered");
   },
-  beforeUpdate() {},
-  updated() {},
+  beforeUpdate() {
+    console.log("Variable change");
+  },
+  updated() {
+    console.log("Render change");
+  },
+  methods: {
+    click($e) {
+      this.message = "The welcome message was change";
+      console.log($e);
+    },
+    whatYouWillDo(data) {
+      console.log(data);
+    },
+  },
 };
 </script>
 
