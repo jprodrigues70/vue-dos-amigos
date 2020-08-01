@@ -1,11 +1,16 @@
 <template>
   <div id="app">
-    <button v-if="!clicked" style="margin: 0 auto" @click="click">
-      Click me
-    </button>
-    <span v-else>
-      Congrats, bro!
-    </span>
+    <div style="margin: 0 auto">
+      <Btn v-if="!clicked" @click="click">
+        Click me
+      </Btn>
+      <span v-else>
+        Congrats, bro!
+      </span>
+      <Btn style="margin-left: 10px" :disabled="true">
+        You can't click me
+      </Btn>
+    </div>
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld :msg="message" @updated="whatYouWillDo" />
   </div>
@@ -23,6 +28,8 @@ import HelloWorld from "./components/HelloWorld.vue";
   computed,
   v-if
   v-else
+  global-components
+  slots
  */
 export default {
   name: "App",
