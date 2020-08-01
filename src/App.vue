@@ -1,23 +1,24 @@
 <template>
   <div id="app">
     <div style="margin: 0 auto">
-      <Btn v-if="!clicked" @click="click">
+      <Btn @click="click">
         Click me
       </Btn>
-      <span v-else>
-        Congrats, bro!
-      </span>
       <Btn style="margin-left: 10px" :disabled="true">
         You can't click me
       </Btn>
     </div>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld :msg="message" @updated="whatYouWillDo" />
+    <Card>
+      <div slot="header">This is a card header</div>
+      <img style="height: 120px" alt="Vue logo" src="./assets/logo.png" />
+      <template #footer>
+        This is a card footer
+      </template>
+    </Card>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 /**
   components,
   props,
@@ -29,13 +30,11 @@ import HelloWorld from "./components/HelloWorld.vue";
   v-if
   v-else
   global-components
-  slots
+  slots,
+  named-slots
  */
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-  },
   data() {
     return {
       message: "Pre-set message",

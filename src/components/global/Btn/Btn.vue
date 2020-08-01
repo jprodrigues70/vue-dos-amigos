@@ -1,9 +1,6 @@
 <template>
-  <button
-    class="c-btn"
-    :class="{ 'c-btn--disabled': disabled }"
-    @click="$emit('click', $event)"
-  >
+  <button class="c-btn" :class="{ 'c-btn--disabled': disabled }" @click="click">
+    {{ clicksNum }}
     <slot />
   </button>
 </template>
@@ -16,9 +13,25 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      clicks: 0,
+    };
+  },
+  computed: {
+    clicksNum() {
+      return this.clicks ? this.clicks : "";
+    },
+  },
+  methods: {
+    click($event) {
+      this.clicks += 1;
+      this.$emit("click", $event);
+    },
+  },
 };
 </script>
-<style>
+<style scoped>
 .c-btn {
   position: relative;
   display: inline-flex;
